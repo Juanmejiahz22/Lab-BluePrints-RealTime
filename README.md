@@ -253,11 +253,6 @@ const store = {
 }
 ```
 
-**⚠️ Nota:** Los datos se pierden al reiniciar el servidor. Para persistencia duradera, integrar con:
-- Base de datos (MongoDB, PostgreSQL)
-- Redis (para caching + pub/sub)
-- Sistema de archivos
-
 ### Manejo de errores
 
 La aplicación maneja múltiples escenarios de error:
@@ -319,65 +314,9 @@ La aplicación maneja múltiples escenarios de error:
 
 ## � Troubleshooting
 
-### Problema: Pantalla en blanco
+---
 
-**Síntomas:** El navegador muestra página blanca al cargar `localhost:5173`
-
-**Soluciones:**
-1. Abre la consola del navegador (F12) y busca errores
-2. Verifica que `npm install` se completó sin errores
-3. Confirma que el puerto 5173 no está ocupado por otro proceso
-4. Asegúrate de que `src/App.jsx` existe y no tiene errores de sintaxis
-
-### Problema: "Backend no disponible"
-
-**Síntomas:** Error rojo en UI: "Backend no disponible. Verifica que el servidor esté corriendo."
-
-**Soluciones:**
-1. Verifica que `npm run dev:server` está corriendo
-2. Comprueba que el puerto 3001 está escuchando:
-   ```bash
-   # Windows
-   netstat -an | findstr "3001"
-   
-   # Linux/Mac
-   lsof -i :3001
-   ```
-3. Revisa que `.env.local` tenga `VITE_API_BASE=http://localhost:3001`
-
-### Problema: No hay colaboración en tiempo real
-
-**Síntomas:** Dibujo en una pestaña no aparece en la otra
-
-**Soluciones:**
-1. Verifica que ambas pestañas tienen el **mismo autor** y **mismo plano**
-2. Abre consola (F12) y busca mensaje: `socket.io connected <ID>`
-3. Confirma que backend muestra: `[io] connected <socketId>` para ambas pestañas
-4. Verifica CORS: el servidor debe permitir el origen del frontend
-
-### Problema: Error CORS
-
-**Síntomas:** Error en consola: "blocked by CORS policy"
-
-**Soluciones:**
-1. El backend ya permite múltiples orígenes (5173, 5174, 5175)
-2. Si usas puerto diferente, agrégalo en `server.js`:
-   ```javascript
-   const ALLOWED_ORIGINS = [
-     'http://localhost:5173',
-     'http://localhost:TU_PUERTO'
-   ]
-   ```
-3. Reinicia el backend después de cambios
-
-### Problema: Socket.IO no conecta
-
-**Síntomas:** Consola muestra error de conexión Socket.IO
-
-**Soluciones:**
-1. Verifica que el backend Socket.IO está corriendo
-2. El cliente ya usa `{ transports: ['websocket'] }` para evitar problemas de polling
-3. Comprueba firewall/antivirus no bloquea puerto 3001
+## 🔐 Consideraciones de seguridad
 
 ---
 
@@ -420,33 +359,7 @@ const PointSchema = z.object({
 
 ---
 
-## 🚀 Mejoras futuras
-
-### Funcionalidades
-
-- [ ] **Undo/Redo** con stack de comandos
-- [ ] **Formas predefinidas** (líneas, rectángulos, círculos)
-- [ ] **Colores de línea** seleccionables
-- [ ] **Grosor de línea** variable
-- [ ] **Cursor remoto** (ver dónde están dibujando otros usuarios)
-- [ ] **Chat en tiempo real** dentro del plano
-- [ ] **Exportar plano** como PNG/SVG
-- [ ] **Versionado** de planos (historial de cambios)
-
-### Técnicas
-
-- [ ] **Persistencia en base de datos** (MongoDB/PostgreSQL)
-- [ ] **Redis adapter** para Socket.IO (escalabilidad horizontal)
-- [ ] **WebRTC** para P2P directo entre clientes
-- [ ] **Compresión** de payloads con algoritmos delta
-- [ ] **Lazy loading** de puntos (para planos muy grandes)
-- [ ] **Tests unitarios** (Jest + React Testing Library)
-- [ ] **Tests E2E** (Playwright/Cypress)
-- [ ] **CI/CD** con GitHub Actions
-
----
-
-## 📚 Referencias y recursos
+##  Referencias y recursos
 
 ### Documentación oficial
 
@@ -468,6 +381,11 @@ const PointSchema = z.object({
 ---
 
 ## 👥 Autores
+
+- **Juan Jose Mejia**
+- **Julian Santiago Cardenas**
+- **Nicolas Pachon**
+- **Nicole Calderon**
 
 Desarrollado como parte del curso de Arquitecturas Empresariales - ECI
 
