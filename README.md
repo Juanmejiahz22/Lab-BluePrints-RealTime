@@ -310,15 +310,9 @@ La aplicación maneja múltiples escenarios de error:
 | **Puntos por plano** | Sin límite* | *Memoria del servidor |
 | **Build size** | ~150KB gzip | Frontend optimizado con Vite |
 
----
-
-## � Troubleshooting
 
 ---
 
-## 🔐 Consideraciones de seguridad
-
----
 
 ## 🔐 Consideraciones de seguridad
 
@@ -387,7 +381,7 @@ const PointSchema = z.object({
 - **Nicolas Pachon**
 - **Nicole Calderon**
 
-Desarrollado como parte del curso de Arquitecturas Empresariales - ECI
+Desarrollado como parte del curso de Arquitectura de Software, Grupo "ElManEsGerman" - ECI
 
 ---
 
@@ -405,4 +399,4 @@ MIT License - Ver archivo `LICENSE` para más detalles
 
 ---
 
-**¿Problemas o sugerencias?** Abre un issue en el repositorio o contacta al equipo docente.
+
